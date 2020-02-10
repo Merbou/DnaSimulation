@@ -1,0 +1,195 @@
+<FlatButton@ButtonBehavior+Label>:
+    font_size:25
+<homeWindow>:
+    orientation: "vertical"
+    spacing: 10
+    canvas.before:
+        Color:
+            rgba:(1,1,1,1)
+        Rectangle:
+            size:self.size
+            pos:self.pos
+    BoxLayout:
+        size_hint_y:None
+        height:30
+        canvas.before:
+            Color:
+                rgba:(.06,.45,.45,1)
+            Rectangle:
+                size:self.size
+                pos:self.pos
+        Label:
+            text: "DNA Simulation"
+            bold: True
+            size_hint_x: .95
+        Button:
+            text: "Save"
+            bold: True
+            size_hint_x: .05
+            height: 30
+            size_hint_y:None
+            font_size:13
+            background_color:(.06,.45,.45,1)
+            on_release:root.export_to_excel()
+    GridLayout:
+        rows:7
+        size_hint_x:1
+        canvas.before:
+            Color:
+                rgba:(.06,.45,.45,1)
+            Rectangle:
+                size:self.size
+                pos:self.pos
+        BoxLayout:
+            Button:
+                size_hint_x: 0.2
+                height: 30
+                font_size:11
+                size_hint_y:None
+                text:"Previous"
+                background_color:(.06,.45,.45,1)
+                on_release:root.prevDna()
+            Label:
+                id:title_dna_field
+                text: ""
+                bold: True
+                size_hint_x: 0.8
+            Button:
+                size_hint_x: 0.2
+                height: 30
+                font_size:11
+                size_hint_y:None
+                text:"Next"
+                background_color:(.06,.45,.45,1)
+                on_release:root.nextDna()
+        BoxLayout:
+            Label:
+                height:30
+                text:"DNA"
+                font_size:12
+                size_hint_x:0.1
+                size_hint_y:None
+            TextInput:
+                size_hint_x:0.9
+                id:dna_field
+                text: ""
+                multiline: False
+                height:30
+                font_size:10
+                readonly: True
+        BoxLayout:
+            Label:
+                height:30
+                text:"DNA reverse complement"
+                font_size:11
+                size_hint_x:0.1
+                size_hint_y:None
+            TextInput:
+                size_hint_x:0.9
+                id:dna_reverse_field
+                text: ""
+                multiline: False
+                height:30
+                font_size:10
+                readonly: True
+        BoxLayout:
+            Label:
+                height:30
+                text:"RNA"
+                size_hint_x:0.1
+                size_hint_y:None
+            TextInput:
+                size_hint_x:0.9
+                id:rna_field
+                text: ""
+                multiline: False
+                height:30
+                font_size:10
+                readonly: True
+        BoxLayout:
+            Label:
+                height:30
+                text:"Protein"
+                size_hint_x:0.1
+                size_hint_y:None
+            TextInput:
+                size_hint_x:.9
+                id:protein_field
+                text: ""
+                multiline: False
+                height:30
+                font_size:10
+                readonly: True
+        BoxLayout:
+            Label:
+                height:30
+                text:"ADN Consensus"
+                size_hint_x:0.1
+                size_hint_y:None
+            TextInput:
+                size_hint_x:.9
+                id:dna_cos_field
+                text: ""
+                multiline: False
+                height:30
+                font_size:10
+                readonly: True
+        GridLayout:
+            cols:3
+            BoxLayout:
+                TextInput:
+                    id:dna_mutations_nombre_field
+                    text: ""
+                    multiline: False
+                    height:30
+                    size_hint_x: 0.2   
+                    size_hint_y:None
+                    on_text_validate:root.mutations()            
+                Button:
+                    size_hint_x: 0.2
+                    height: 30
+                    size_hint_y:None
+                    text:"Mutations"
+                    background_color:(.06,.45,.45,1)
+                    on_release:root.mutations()
+            BoxLayout:
+                TextInput:
+                    id:dna_search_field
+                    text: ""
+                    multiline: False
+                    height:30
+                    size_hint_x: 0.4   
+                    size_hint_y:None
+                    on_text_validate:root.searchMotif()            
+                Button:
+                    size_hint_x: 0.2
+                    height: 30
+                    size_hint_y:None
+                    text:"search Motif"
+                    background_color:(.06,.45,.45,1)
+                    on_release:root.searchMotif()
+            BoxLayout:
+                Button:
+                    size_hint_x: 0.2
+                    height: 30
+                    font_size:13
+                    size_hint_y:None
+                    text:"Rate CG%"
+                    background_color:(.06,.45,.45,1)
+                    on_release:root.rand_pie_rate_CG()
+                Button:
+                    size_hint_x: 0.2
+                    height: 30
+                    size_hint_y:None
+                    font_size:13
+                    text:"Frequency Nucleotides"
+                    background_color:(.06,.45,.45,1)
+                    on_release:root.rand_histo_nucleotide()
+                Button:
+                    size_hint_x: 0.2
+                    height: 30
+                    size_hint_y:None
+                    font_size:13
+                    text:"Frequency Codons"
+                    background_color:(.06,.45,.45,1)
+                    on_release:root.rand_histo_codons()

@@ -1,0 +1,21 @@
+<motifWindow>:
+    orientation: "vertical"
+    canvas.before:
+        Color:
+            rgba:(1,1,1,1)
+        Rectangle:
+            size:self.size
+            pos:self.pos
+    size_hint_y:None
+    height:50
+    canvas.before:
+        Color:
+            rgba:(.06,.45,.45,1)
+        Rectangle:
+            size:self.size
+            pos:self.pos
+    Label:
+        text: ""
+        id:position_field
+        bold: True
+        size_hint_x: 1        

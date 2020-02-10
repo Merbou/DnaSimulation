@@ -1,0 +1,75 @@
+<FlatButton@ButtonBehavior+Label>:
+    font_size:25
+<menuWindow>:
+    orientation: "vertical"
+    canvas.before:
+        Color:
+            rgba:(1,1,1,1)
+        Rectangle:
+            size:self.size
+            pos:self.pos
+            source: "home.jpg"
+            
+    BoxLayout:
+        size_hint_y:None
+        height:50
+        padding:0
+        canvas.before:
+            Color:
+                rgba:(.06,.45,.45,1)
+            Rectangle:
+                size:self.size
+                pos:self.pos
+        Label:
+            text: "DNA Simulation"
+            bold: True
+            size_hint_x: 1
+    GridLayout:
+        rows:2
+        orientation:"vertical"
+        spacing:10
+        padding:10
+        BoxLayout:
+            TextInput:
+                id:dna_size_field
+                text: ""
+                multiline: False
+                height:30
+                size_hint_x: 0.4   
+                size_hint_y:None
+                on_text_validate:root.chooseFunction()            
+            Button:
+                size_hint_x: 0.2
+                height: 30
+                size_hint_y:None
+                font_size:13
+                text:"Generate DNA"
+                background_color:(.06,.45,.45,1)
+                on_press:root.chooseFunction()
+                on_release:app.stop()
+        Button:
+            height: 30
+            size_hint_y:None
+            text:"Upload fasta file"
+            background_color:(.06,.45,.45,1)
+            on_release: root.show_load()
+<LoadDialog>:
+    BoxLayout:
+        size: root.size
+        pos: root.pos
+        orientation: "vertical"
+        FileChooserListView:
+            id: filechooser
+            path: "C:/Users/Merouane/Desktop/BIOINFO-M1/S1/Projets/Projet_Sys"
+        BoxLayout:
+            size_hint_y: None
+            height: 30
+            Button:
+                text: "Cancel"
+                on_release: root.cancel()
+                background_color:(.06,.45,.45,1)
+            Button:
+                text: "Load"
+                on_press: root.load(filechooser.path, filechooser.selection)
+                background_color:(.06,.45,.45,1)
+                on_release: app.stop()
